@@ -15,32 +15,32 @@ class Login extends React.Component {
        pass: this.state.pass
      })
          .then(function (response) {
-             console.log(response.data[0].Id)
+             console.log(response.data.data[0]._id)
             // Router.push('/present')
-           if (response.data.length === 0)
-              alert('hata')
-           else
-           {
-             if(response.data[0].Type === 1)
+            if (response.data.data.length === 0)
+               alert('hata')
+            else
+            {
+              if(response.data.data[0].Type === 1)
+              {
+                  window.location.href = '/present?name=Vercel&id='+ response.data.data[0]._id
+
+                  Router.push({
+                      pathname: '/present',
+                      query: { name: 'Vercel',id : response.data.data[0]._id },
+                  })
+
+              }
+              else
              {
-                 window.location.href = '/present?name=Vercel&id='+ response.data[0].Id
 
-                 Router.push({
-                     pathname: '/present',
-                     query: { name: 'Vercel',id : response.data[0].Id },
-                 })
+                  Router.push({
+                      pathname: '/present',
+                      query: { name: 'Sercel',id : response.data.data[0]._id },
+                  })
 
-             }
-             else
-             {
-
-                 Router.push({
-                     pathname: '/present',
-                     query: { name: 'Sercel',id : response.data[0].Id },
-                 })
-
-             }
-           }
+              }
+            }
 
 
 

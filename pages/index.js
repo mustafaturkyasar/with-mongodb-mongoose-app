@@ -1,65 +1,52 @@
-import Link from 'next/link'
-import dbConnect from '../utils/dbConnect'
-import Pet from '../models/Pet'
 
-const Index = ({ pets }) => (
-  <>
-    {/* Create a card for each pet */}
-    {pets.map((pet) => (
-      <div key={pet._id}>
-        <div className="card">
-          <img src={pet.image_url} />
-          <h5 className="pet-name">{pet.name}</h5>
-          <div className="main-content">
-            <p className="pet-name">{pet.name}</p>
-            <p className="owner">Owner: {pet.owner_name}</p>
+import Layout from "../components/Layout";
+import Login from "../components/Login";
 
-            {/* Extra Pet Info: Likes and Dislikes */}
-            <div className="likes info">
-              <p className="label">Likes</p>
-              <ul>
-                {pet.likes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-            <div className="dislikes info">
-              <p className="label">Dislikes</p>
-              <ul>
-                {pet.dislikes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
 
-            <div className="btn-container">
-              <Link href="/[id]/edit" as={`/${pet._id}/edit`}>
-                <button className="btn edit">Edit</button>
-              </Link>
-              <Link href="/[id]" as={`/${pet._id}`}>
-                <button className="btn view">View</button>
-              </Link>
+
+export default function HomePage() {
+  return (
+      <Layout>
+        <div className="super_container">
+
+
+          <div className="register">
+            <div className="container-fluid">
+              <div className="row row-eq-height">
+                <div className="col-lg-6 nopadding">
+                  <div className="register_section d-flex flex-column align-items-center justify-content-center">
+                    <div className="register_content text-center">
+                      <h1 className="register_title">
+                        Matematik Özel Ders Uzaktan Canlı Özel Ders <span>Kemal Balta</span> Koçluk
+                        Sistemi
+                      </h1>
+                      <h1 className="register_title">
+                        Matematik Özel Ders Uzaktan Canlı Özel Ders <span>Kemal Balta</span> Koçluk
+                        Sistemi
+                      </h1>
+                      <p className="register_text">
+                        Üniversiteden mezun olduğum 2001 yılından buyana neredeyse her gün Matematik Özel Ders vermekteyim.
+                        Üniversite Sınavı (TYT-AYT) ve Liselere Geçiş (LGS) sınavında bu güne kadar ilk 100'de 11 farklı öğrencim olup,
+                        5. sınıf ile Üniversite Sınavına hazırlık arasındaki seviyelere hitap etmekteyim.
+                      </p>
+
+                    </div>
+                  </div>
+                </div>
+
+                <Login></Login>
+              </div>
             </div>
           </div>
+
+
+
+
+
+
+
+
         </div>
-      </div>
-    ))}
-  </>
-)
-
-/* Retrieves pet(s) data from mongodb database */
-export async function getServerSideProps() {
-  await dbConnect()
-
-  /* find all the data in our database */
-  const result = await Pet.find({})
-  const pets = result.map((doc) => {
-    const pet = doc.toObject()
-    pet._id = pet._id.toString()
-    return pet
-  })
-
-  return { props: { pets: pets } }
+      </Layout>
+  );
 }
-
-export default Index
