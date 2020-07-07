@@ -13,8 +13,10 @@ export default function present(query) {
 
             </Head>
             <div className="super_container">
-                {console.log(query)}
-                <Header name={query.name} id={query.id}></Header>
+                {
+                    console.log(query)
+                }
+                <Header name={query.query.name} id={query.query.id}></Header>
 
                 <div className="home">
                     <div className="hero_slider_container">
