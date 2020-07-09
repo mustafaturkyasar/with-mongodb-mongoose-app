@@ -25,9 +25,10 @@ class UpdateFile extends React.Component {
     e.preventDefault();
     await axios
       .post("/api/student/createStudentFile", {
-        Id: this.props.user.Id,
-        path: this.state.path,
-        dosya: this.state.dosya,
+        UserId: this.props.user.data.Id,
+        DosyaAd: this.state.path,
+        Path: this.state.dosya,
+        Aktif: 1,
       })
       .then(function (response) {
         if (response.data > 1) alert("Ekleme İşlemi Balarılı");
