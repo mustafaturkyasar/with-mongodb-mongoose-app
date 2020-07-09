@@ -13,11 +13,14 @@ class CreateStudent extends React.Component {
     onLoginClick = async () => {
 
 
-        await  axios.post('/api/student/createStudent', {
-            user: this.state.user,
-            pass: this.state.pass,
-            name : this.state.name,
-            surname : this.state.surname
+        await  axios.post('/api/student/createUser', {
+            UserName: this.state.user,
+            Pass: this.state.pass,
+            Type : 2,
+            Active : 1,
+            Ad : this.state.name,
+            Soyad : this.state.surname,
+
         })
             .then(function (response) {
                 if (response.data === -1)
@@ -95,7 +98,7 @@ class CreateStudent extends React.Component {
                                 className="search_submit_button trans_200"
                                 onClick={this.onLoginClick}
                             >
-                                Giriş Yap
+                               Öğrenci Ekle
                             </button>
                         </Link>
                     </div>

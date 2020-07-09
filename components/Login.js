@@ -25,10 +25,10 @@ class Login extends React.Component {
               {
                   window.location.href = '/present?name=Vercel&id='+ response.data.data[0]._id
 
-                  Router.push({
-                      pathname: '/present',
-                      query: { name: 'Vercel',id : response.data.data[0]._id },
-                  })
+                  // Router.push({
+                  //     pathname: '/present',
+                  //     query: { name: 'Vercel',id : response.data.data[0]._id },
+                  // })
 
               }
               else

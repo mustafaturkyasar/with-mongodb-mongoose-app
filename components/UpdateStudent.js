@@ -5,10 +5,10 @@ const axios = require("axios").default;
 class UpdateStudent extends React.Component {
     state = {
         // Initially, no file is selected
-        name: this.props.user.Ad,
-        surname : this.props.user.Soyad,
-        user :this.props.user.UserName,
-        pass  :this.props.user.Pass
+         name: this.props.user.data.Ad,
+         surname :  this.props.user.data.Soyad,
+         user : this.props.user.data.UserName,
+         pass  : this.props.user.data.Pass
     };
     onLoginClick = async () => {
 
@@ -81,7 +81,7 @@ class UpdateStudent extends React.Component {
                 <div className="search_section d-flex flex-column align-items-center justify-content-center">
 
                     <div className="search_content text-center">
-
+                        {console.log(this.props.user.data.Ad)}
                         <input
                             value={this.state.name}
                             onChange={this.nameChange}
