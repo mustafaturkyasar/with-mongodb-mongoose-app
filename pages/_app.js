@@ -1,12 +1,4 @@
-import '../css/style.css'
-import '../css/form.css'
-import Head from 'next/head'
-import Link from 'next/link'
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
     return <Component {...pageProps} />
-
-
 }
-
-export default MyApp
