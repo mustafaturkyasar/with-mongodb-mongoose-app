@@ -47,7 +47,7 @@ class UpdateFile extends React.Component {
     e.preventDefault();
     const self = this;
     const data = new FormData();
-    data.append("video", this.state.selectedFile);
+    data.append("file", this.state.selectedFile);
     data.append("Id", 1);
     axios
       .post("/api/upload", data, {
