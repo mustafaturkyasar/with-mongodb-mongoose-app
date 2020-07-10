@@ -33,14 +33,14 @@ const uploadForm = (next) => (req, res) => {
           " to ",
           `public/uploads/${files.file.name}`
         );
-        // await fs.rename(
-        //   files.file.path,
-        //   `public/uploads/${files.file.name}`,
-        //   err => {
-        //     if (err) throw err;
-        //   }
-        // );
-        fs.renameSync(files.file.path, `public/uploads/${files.file.name}`);
+         await fs.rename(
+           files.file.path,
+           `public/uploads/${files.file.name}`,
+            err => {
+            if (err) throw err;
+           }
+         );
+       // fs.renameSync(files.file.path, `public/uploads/${files.file.name}`);
         req.form = { fields, files };
         return resolve(next(req, res));
       });
